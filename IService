@@ -1,0 +1,12 @@
+package com.Task3.service;
+
+import java.util.List;
+
+import com.Task3.model.Cloth;
+
+public interface IService {
+	void add(Cloth cr);
+	void delete(Cloth cr);
+	void update(Cloth cr);
+	List<Cloth> selection();
+}

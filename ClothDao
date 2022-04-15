@@ -1,0 +1,44 @@
+package com.Task3.dao;
+
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.Task3.model.*;
+@Repository
+public class ClothDao implements IClothDao{
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	@Override
+	public void add(Cloth cr) {
+		sessionFactory.getCurrentSession().save(cr);
+		
+	}
+
+	@Override
+	public void delete(Cloth cr) {
+		sessionFactory.getCurrentSession().delete(cr);
+		
+	}
+
+	@Override
+	public void update(Criminal cr) {
+		sessionFactory.getCurrentSession().update(cr);
+		
+	}
+
+	@Override
+	public List<Cloth> selection() {
+		List<Cloth> cr = (List<Criminal>) sessionFactory.getCurrentSession()
+                .createCriteria(Cloth.class)
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+        return cr;
+	}
+	
+	
+	
+}
